@@ -13,8 +13,46 @@
 
 Route::get('/', function () {
     return view('welcome');
+    
+    
+//    if(Auth::check()){
+//        
+//        return "The user is logged in!";
+//        
+//    }
+//    
+    
+//    $username = 'ornab';
+//    $password = "hdfhdf";
+//    
+//    
+//    if(Auth::attempt(['username'=>$username, 'password'=>$password])){
+//        
+//        
+//        return redirect()->intented('/admin');
+//        
+//    }
+    
+    
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+Route::get('/admin/user/roles', ['middleware' => 'role', function(){
+    
+      
+    
+         return "Middleware";
+    
+}]);
+
+
+
+
+
+
