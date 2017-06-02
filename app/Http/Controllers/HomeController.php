@@ -22,8 +22,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //First Way
+        
+           //$request->session()->put(['Hasan'=> 'Brilliant Student']);
+        
+        //2nd Way
+        
+           //session(['Ahmed'=> 'Awesome Student']);
+        
+           
+        return $request->session()->all();
+        
+        //return $request->session()->get('Ornab');
+        
+        //return session('Ahmed');
+        
+        //If want delete a specific session
+        //return session()->forget('Hasan');
+        
+        //If want delete all sessions
+       // return session()->flush(); 
+        
         
         $user = Auth::user();
         
