@@ -11,8 +11,10 @@
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
     
     
 //    if(Auth::check()){
@@ -33,6 +35,7 @@ Route::get('/', function () {
 //        
 //    }
     
+
     
 });
 
@@ -43,13 +46,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
-Route::get('/admin/user/roles', ['middleware' => 'role', function(){
+Route::get('/admin/user/roles', ['middleware' => ['role', 'auth','web'], function(){
     
       
     
-         return "Middleware";
+         return "Middleware role";
     
 }]);
+
+
+Route::get('/admin', 'AdminController@index');
 
 
 
