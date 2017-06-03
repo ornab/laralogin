@@ -24,28 +24,90 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        //First Way
         
-           //$request->session()->put(['Hasan'=> 'Brilliant Student']);
         
-        //2nd Way
+    /**
+     *   First Way for initialize a session
+     *
+     */
         
-           //session(['Ahmed'=> 'Awesome Student']);
+       
+        //$request->session()->put(['Hasan'=> 'Brilliant Student']);
         
-           
-        return $request->session()->all();
+    /**
+     *   second Way for initialize a session
+     *
+     */
+        
+        //session(['Ahmed'=> 'Awesome Student']);
+        
+          
+    /**
+     *    get all session data
+     *
+     */
+        
+        //return $request->session()->all();
+        
+    /**
+     *    1st way of getting a specific session data
+     *
+     */
         
         //return $request->session()->get('Ornab');
         
+    /**
+     *    2nd way of getting a specific session data
+     *
+     */
+        
         //return session('Ahmed');
         
-        //If want delete a specific session
-        //return session()->forget('Hasan');
+    /**
+     *    If want delete a specific session
+     *
+     */ 
         
-        //If want delete all sessions
+        
+      //return session()->forget('Hasan');
+        
+        
+    /**
+     *    If want delete all sessions
+     *
+     */     
+        
        // return session()->flush(); 
         
         
+    /**
+     *  Flashing Data (It is similar to session but it stays just for one request & mostly used when we ask for a feedback 
+     *
+     *  from a user)
+     *
+     */
+        
+        
+//        $request->session()->flash('message', 'Post has been created');
+//        
+//        return $request->session()->get('message');
+//        
+            
+    /**
+     *   Use Reflash -> If you want to keep data for a little longer
+     *
+     */ 
+        
+        $request->session()->reflash();
+        
+    /**
+     *   Use Keep -> If you want to keep a specific data for a little longer & delete everything else
+     *
+     */ 
+        
+        $request->session()->keep('message');
+        
+    
         $user = Auth::user();
         
         return view('home', compact('user'));
